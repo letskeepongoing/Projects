@@ -1,0 +1,4 @@
+#request
+---
+string direction
+bool movement

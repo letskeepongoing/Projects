@@ -1,0 +1,1 @@
+nav_msgs/Odometry[] result_odom_array
