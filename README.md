@@ -11,4 +11,5 @@ I also have a project where I use ROS to get a turtlebot out of a maze. I use di
 A more indepth project using linear controls for a non-linear system. This models a AFM microscope as a spring mass damper system. I also linearize the system but I show that the non-linear system is stable and controllable. 
 
 Lastly there is a machine vision project showing a SCARRA-like manipuator picking up a nut and bringing it back to the start point of the manupulator. I use OpenCV in my python code to get the position which I send to the PSoC to control the manipulator. There is a video and picture of what I did.
+
 There is much more to do!
