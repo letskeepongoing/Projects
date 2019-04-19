@@ -1,6 +1,6 @@
 # Projects
 
-Here will be the repository for my projects.
+Here will be the repository for some of the projects I have worked on.
 
 I am building a portfolio of projects to show knowledge in control theory and robotics. 
 
