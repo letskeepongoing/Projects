@@ -21,9 +21,9 @@ class main_turtle{
   ros::NodeHandle nh;
   ros::Publisher pub;
   ros::Subscriber sub_read; //this reads the odom
-  ros::Subscriber sense; //this reasds the laser 
+  ros::Subscriber sense; //this reads the laser 
   ros::Rate *rate_;
-  geometry_msgs::Twist var; //well just use this //but I might need to do some new function just to publish...
+  geometry_msgs::Twist var;
   nav_msgs::Odometry latest_odometry;
   std_msgs::String direction;
   ros::ServiceServer turtle_main;
@@ -100,10 +100,6 @@ class main_turtle{
             // This is a security mesure to guarantee that the saved element in the vector is 
             // what we use for calculating.
             
-            // We check if its empty otherwise cpp just crashes without any error message
-            // [turtleAction-1] process has died [pid 4894, exit code -11, cmd /home/user/catkin_ws/devel/lib/my_turtlebot_actions/turtleAction __name:=turtleAction __log:=/home/user/.ros/log/3bfc0060-d1e7-11e8-8ee9-064b4381d178/turtleAction-1.log].
-            // log file: /home/user/.ros/log/3bfc0060-d1e7-11e8-8ee9-064b4381d178/turtleAction-1*.log
-            
             if (!this->odoms.result_odom_array.empty()) 
             {
                 nav_msgs::Odometry last_odom = this->odoms.result_odom_array.back(); //.back() pulls the last element in the array;
@@ -138,7 +134,7 @@ class main_turtle{
     
     this->finish =are_we_out_of_maze();
     
-   if(msg->ranges[360] < 1.4  && msg->ranges[0] > 1){ //this is if I somehow go s
+   if(msg->ranges[360] < 1.4  && msg->ranges[0] > 1){
      var.linear.x = 0;
      var.angular.z = -0.2; //turn for 3.6 seconds
      ROS_INFO("second case %f" ,msg->ranges[360]);
@@ -189,14 +185,14 @@ class main_turtle{
        res.movement = false;
    }
    else{
-   res.movement = true; //useless boolean
+   res.movement = true;
    }
    
-   action_active = true; // NEED THIS TO START EVERYTHING AT THE SAME TIME
+   action_active = true; 
    
    //success = true
    
-   return res.movement; // I DIDNT RLLY ADD ANYTHING THAT WAITED FOR ME TO GET THE TRUE TO START THE SERVER
+   return res.movement; 
   }
   
 };
@@ -207,7 +203,6 @@ int main(int argc, char** argv) {
     ros::init(argc,argv, "main_turtle");
     main_turtle waddler;
     
-    //I DONT NEED TO CALL readscan because it should be working in the background...
     
     while (ros::ok()){
       waddler.move_around();
